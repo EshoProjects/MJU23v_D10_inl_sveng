@@ -131,18 +131,8 @@
                 }
                 else if (command == "translate")
                 {
-                    if (argument.Length == 2)
-                    {
-                        foreach (SweEngGloss gloss in dictionary)
-                        {
-                            // FIXME: No handling for case sensitivity or partial matches
-                            if (gloss.word_swe == argument[1])
-                                Console.WriteLine($"English for {gloss.word_swe} is {gloss.word_eng}");
-                            if (gloss.word_eng == argument[1])
-                                Console.WriteLine($"Swedish for {gloss.word_eng} is {gloss.word_swe}");
-                        }
-                    }
-                    else if (argument.Length == 1)
+                    
+                   if (argument.Length == 1)
                     {
                         Console.WriteLine("Write word to be translated: ");
                         string s = Console.ReadLine().ToLower();  // Convert to lowercase for case-insensitive comparison
