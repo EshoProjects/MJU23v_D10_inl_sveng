@@ -98,20 +98,8 @@
                 }
                 else if (command == "delete")
                 {
-                    if (argument.Length == 3)
-                    {
-                        int index = -1;
-
-                        // FIXME: No error handling if the specified words are not found
-                        for (int i = 0; i < dictionary.Count; i++)
-                        {
-                            SweEngGloss gloss = dictionary[i];
-                            if (gloss.word_swe == argument[1] && gloss.word_eng == argument[2])
-                                index = i;
-                        }
-                        dictionary.RemoveAt(index);
-                    }
-                    else if (argument.Length == 1)
+                   
+                    if (argument.Length == 1)
                     {
                         Console.WriteLine("Write word in Swedish: ");
                         string s = Console.ReadLine();
