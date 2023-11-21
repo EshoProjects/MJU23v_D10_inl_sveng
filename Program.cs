@@ -90,10 +90,10 @@
                     else if (argument.Length == 1)
                     {
                         Console.WriteLine("Write word in Swedish: ");
-                        string s = Console.ReadLine();
+                        string sa = Console.ReadLine();
                         Console.Write("Write word in English: ");
-                        string e = Console.ReadLine();
-                        dictionary.Add(new SweEngGloss(s, e));
+                        string ea = Console.ReadLine();
+                        dictionary.Add(new SweEngGloss(sa, ea));
                     }
                 }
                 else if (command == "delete")
@@ -102,16 +102,16 @@
                     if (argument.Length == 1)
                     {
                         Console.WriteLine("Write word in Swedish: ");
-                        string s = Console.ReadLine();
+                        string sa = Console.ReadLine();
                         Console.Write("Write word in English: ");
-                        string e = Console.ReadLine();
+                        string ea = Console.ReadLine();
                         int index = -1;
 
                         // FIXME: No error handling if the specified words are not found
                         for (int i = 0; i < dictionary.Count; i++)
                         {
                             SweEngGloss gloss = dictionary[i];
-                            if (gloss.word_swe == s && gloss.word_eng == e)
+                            if (gloss.word_swe == sa && gloss.word_eng == ea)
                                 index = i;
                         }
                         dictionary.RemoveAt(index);
@@ -123,15 +123,15 @@
                    if (argument.Length == 1)
                     {
                         Console.WriteLine("Write word to be translated: ");
-                        string s = Console.ReadLine().ToLower();  // Convert to lowercase for case-insensitive comparison
+                        string sa = Console.ReadLine().ToLower();  // Convert to lowercase for case-insensitive comparison
 
                         foreach (SweEngGloss gloss in dictionary)
                         {
                             // Use StringComparison.OrdinalIgnoreCase for case-insensitive comparison
-                            if (gloss.word_swe.Equals(s, StringComparison.OrdinalIgnoreCase))
+                            if (gloss.word_swe.Equals(sa, StringComparison.OrdinalIgnoreCase))
                                 Console.WriteLine($"English for {gloss.word_swe} is {gloss.word_eng}");
 
-                            if (gloss.word_eng.Equals(s, StringComparison.OrdinalIgnoreCase))
+                            if (gloss.word_eng.Equals(sa, StringComparison.OrdinalIgnoreCase))
                                 Console.WriteLine($"Swedish for {gloss.word_eng} is {gloss.word_swe}");
                         }
 
