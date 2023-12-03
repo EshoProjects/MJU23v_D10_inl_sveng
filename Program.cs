@@ -71,6 +71,10 @@ namespace MJU23v_D10_inl_sveng
                                     }
                                 }
                             }
+                            catch (FileNotFoundException)
+                            {
+                                Console.WriteLine($"File not found: {argument[1]}");
+                            }
                             catch (Exception ex)
                             {
                                 Console.WriteLine($"Error loading file: {ex.Message}");
