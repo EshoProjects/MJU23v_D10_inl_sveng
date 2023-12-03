@@ -57,21 +57,6 @@
                             }
                         }
                     }
-                    else if (argument.Length == 1)
-                    {
-                        // FIXME: No error handling if the default file does not exist
-                        using (StreamReader sr = new StreamReader(defaultFile))
-                        {
-                            dictionary = new List<SweEngGloss>(); // Empty it!
-                            string line = sr.ReadLine();
-                            while (line != null)
-                            {
-                                SweEngGloss gloss = new SweEngGloss(line);
-                                dictionary.Add(gloss);
-                                line = sr.ReadLine();
-                            }
-                        }
-                    }
                 }
                 else if (command == "list")
                 {
