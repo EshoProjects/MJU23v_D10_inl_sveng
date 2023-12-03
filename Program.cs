@@ -58,8 +58,15 @@ namespace MJU23v_D10_inl_sveng
                                     string line = sr.ReadLine();
                                     while (line != null)
                                     {
-                                        SweEngGloss gloss = new SweEngGloss(line);
-                                        dictionary.Add(gloss);
+                                        try
+                                        {
+                                            SweEngGloss gloss = new SweEngGloss(line);
+                                            dictionary.Add(gloss);
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Console.WriteLine($"Error reading line from file: {ex.Message}");
+                                        }
                                         line = sr.ReadLine();
                                     }
                                 }
