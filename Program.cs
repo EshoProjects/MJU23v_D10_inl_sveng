@@ -149,13 +149,26 @@ namespace MJU23v_D10_inl_sveng
                                 Console.WriteLine("Write word to be translated: ");
                                 string sa = Console.ReadLine().ToLower();  // Convert to lowercase for case-insensitive comparison
 
+                                bool translationFound = false;
+
                                 foreach (SweEngGloss gloss in dictionary)
                                 {
                                     if (gloss.word_swe.Equals(sa, StringComparison.OrdinalIgnoreCase))
+                                    {
                                         Console.WriteLine($"English for {gloss.word_swe} is {gloss.word_eng}");
+                                        translationFound = true;
+                                    }
 
                                     if (gloss.word_eng.Equals(sa, StringComparison.OrdinalIgnoreCase))
+                                    {
                                         Console.WriteLine($"Swedish for {gloss.word_eng} is {gloss.word_swe}");
+                                        translationFound = true;
+                                    }
+                                }
+
+                                if (!translationFound)
+                                {
+                                    Console.WriteLine("Translation not found.");
                                 }
                             }
                             catch (Exception ex)
