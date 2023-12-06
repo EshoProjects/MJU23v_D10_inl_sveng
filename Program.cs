@@ -8,15 +8,16 @@ namespace MJU23v_D10_inl_sveng
     {
         static List<SweEngGloss> dictionary;
 
+        public static int I { get; private set; }
+
         class SweEngGloss
         {
             public string word_swe, word_eng;
 
             public SweEngGloss(string line)
             {
+                ParseLine(line);
             }
-
-            // Constructors and other members...
 
             // Constructor for initializing from a line in the file
             public SweEngGloss(string line, string? ea)
@@ -26,10 +27,28 @@ namespace MJU23v_D10_inl_sveng
 
             private void ParseLine(string line)
             {
-                // FIXME: Potential issue if the line does not contain '|' or if words[1] doesn't exist
-                string[] words = line.Split('|');
-                this.word_swe = words[0];
-                this.word_eng = words[1];
+                // Check if the line contains '|'
+                if (line.Contains('|'))
+                {
+                    string[] words = line.Split('|');
+
+                    // Check if words array has at least two elements
+                    if (words.Length >= 2)
+                    {
+                        this.word_swe = words[0];
+                        this.word_eng = words[1];
+                    }
+                    else
+                    {
+                        // Handle the case where there are not enough elements in the words array
+                        throw new ArgumentException("Invalid line format. Expected at least two elements separated by '|'.");
+                    }
+                }
+                else
+                {
+                    // Handle the case where '|' is not found in the line
+                    throw new ArgumentException("Invalid line format. Expected '|' separator.");
+                }
             }
         }
 
